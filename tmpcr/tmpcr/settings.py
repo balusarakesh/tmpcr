@@ -25,7 +25,7 @@ SECRET_KEY = '(@t1)x^4u@1et8verex(yg)%)%z&btvmmo2sq^&@%bk0q37)4('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["ec2-13-56-181-224.us-west-1.compute.amazonaws.com", "localhost", "*"]
 
 
 # Application definition
@@ -74,9 +74,13 @@ WSGI_APPLICATION = 'tmpcr.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+'default': {
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': 'mysql',
+        'USER': 'root',
+        'PASSWORD': '5454',
+        'HOST': '/mnt/mysql/mysql.sock',   # Or an IP Address that your DB is hosted on
+        'PORT': '3307',
     }
 }
 
