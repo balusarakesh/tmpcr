@@ -23,12 +23,12 @@ def date(request):
 
 def create(request):
     try:
-        for i in range(10):
+        for i in range(10000):
             open(os.path.join(TMP_DIR, get_random_chars(10)), 'a').close()
-        return HttpResponse("10 temporary files created")
+        return HttpResponse("10000 temporary files created")
     except Exception, e:
         print str(e)
-        return HttpResponse("Respone 503: Unable to create 10 temporary files", status=503)
+        return HttpResponse("Respone 503: Unable to create 10000 temporary files", status=503)
     
 def delete(request):
     try:
@@ -45,4 +45,4 @@ def delete(request):
         return HttpResponse(str(to_be_deleted) + " old temporary files deleted")
     except Exception, e:
         print str(e)
-        return HttpResponse("Respone 503: Unable to delete 10 old temporary files", status=503)  
+        return HttpResponse("Respone 503: Unable to delete " + str(to_be_deleted) + " old temporary files", status=503)  
