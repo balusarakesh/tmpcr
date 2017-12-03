@@ -39,7 +39,9 @@ def delete(request):
         if int(n) > len(files_list):
             to_be_deleted = len(files_list)
         for i in range(to_be_deleted):
-            os.remove(os.path.join(TMP_DIR, files_list[i]))
+            loc = os.path.join(TMP_DIR, files_list[i])
+            if os.path.isfile(loc):
+                os.remove(loc)
         return HttpResponse(str(to_be_deleted) + " old temporary files deleted")
     except Exception, e:
         print str(e)
